@@ -1,0 +1,31 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell(npm view better-auth version)",
+      "PowerShell(npm view prisma version)",
+      "PowerShell(npm view @prisma/client version)",
+      "PowerShell(npm view @prisma/adapter-pg version)",
+      "PowerShell(npm view better-auth peerDependencies --json)",
+      "PowerShell(npm install better-auth@1.7.28 @prisma/client@7.10.1 @prisma/adapter-pg@7.10.1 pg 2>&1)",
+      "PowerShell(npm install -D prisma@7.10.1 @types/pg dotenv 2>&1)",
+      "PowerShell(Get-ChildItem node_modules/better-auth/dist/adapters -ErrorAction SilentlyContinue | Select-Object Name; \\(Get-Content node_modules/better-auth/package.json | ConvertFrom-Json\\).exports.PSObject.Properties.Name | Select-String 'prisma|next|react|plugins$|cookies|social'; Get-ChildItem node_modules/@better-auth | Select-Object Name; npx prisma init --help 2>&1 | Select-Object -First 30)",
+      "PowerShell($c = [IO.File]::ReadAllText\\(\"$PWD\\\\.env\"\\).TrimStart\\([char]0xFEFF\\); [IO.File]::WriteAllText\\(\"$PWD\\\\.env\", $c, \\(New-Object Text.UTF8Encoding $false\\)\\); [IO.File]::ReadAllBytes\\(\"$PWD\\\\.env\"\\)[0..2])",
+      "PowerShell(npx prisma generate 2>&1)",
+      "PowerShell(npx auth@latest generate --output prisma/schema.prisma --yes 2>&1)",
+      "PowerShell(npx shadcn@latest add card avatar dropdown-menu alert skeleton --yes 2>&1)",
+      "PowerShell(npx next typegen 2>&1)",
+      "PowerShell(npm run typecheck 2>&1)",
+      "PowerShell(npx eslint app components hooks lib proxy.ts 2>&1)",
+      "PowerShell(Get-NetTCPConnection -LocalPort 5432 -State Listen -ErrorAction SilentlyContinue)",
+      "PowerShell(docker compose up -d postgres 2>&1)",
+      "PowerShell(Get-Process -Id 25584,19032)",
+      "PowerShell($c = [IO.File]::ReadAllText\\(\"$PWD\\\\.env\"\\).Replace\\(\"localhost:5432/next_app\",\"localhost:5433/next_app\"\\); [IO.File]::WriteAllText\\(\"$PWD\\\\.env\", $c, \\(New-Object Text.UTF8Encoding $false\\)\\); docker compose up -d postgres 2>&1 | Select-Object -Last 3; Start-Sleep 4; npx prisma migrate dev --name init_auth 2>&1 | Select-Object -Last 15)",
+      "PowerShell(npx next dev --port 3000)",
+      "PowerShell($ok=$false; for \\($i=0; $i -lt 60; $i++\\) { try { $r = Invoke-WebRequest -UseBasicParsing http://localhost:3000/api/auth/ok -TimeoutSec 30; $ok=$true; break } catch { Start-Sleep 1 } }; \"ok=$ok\"; if \\($ok\\) { $r.StatusCode; $r.Content })",
+      "PowerShell($f = Get-Content \"C:\\\\Users\\\\kko\\\\.claude\\\\projects\\\\c--src-repos-FSC-next-app\\\\a3e81bb3-3857-4c04-aa26-3822d393e6f3\\\\tool-results\\\\by8s504q9.txt\" -Raw; \"title ok: \" + \\($f.Contains\\('Sign in · next-app'\\)\\); \"button ok: \" + $f.Contains\\('Continue with GitHub'\\); \"error msg ok: \" + $f.Contains\\('You cancelled the GitHub authorization'\\); $i = $f.IndexOf\\('--- social sign-in POST'\\); $f.Substring\\($i\\))",
+      "PowerShell(npx prettier --write \"app/\\(app\\)/dashboard/page.tsx\" \"app/\\(app\\)/layout.tsx\" \"app/\\(auth\\)/layout.tsx\" \"app/\\(auth\\)/sign-in/page.tsx\" app/layout.tsx 2>&1)",
+      "PowerShell(Move-Item \"app/\\(app\\)/dashboard\" \"app/\\(app\\)/app\")",
+      "PowerShell(npx prettier --write components/auth/auth-status.tsx \"app/\\(app\\)/app/page.tsx\" \"app/\\(app\\)/app/account-card.tsx\" \"app/\\(app\\)/layout.tsx\" 2>&1)"
+    ]
+  }
+}
